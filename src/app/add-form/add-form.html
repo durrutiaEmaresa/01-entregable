@@ -1,0 +1,37 @@
+<div>
+  <h2>Agrega estudiante</h2>
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" id="name" formControlName="name" placeholder="Nombre" />
+      <div *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched">El nombre es requerido</div>
+
+    </div>
+    <div class="form-group">
+      <label for="surname">Apellido</label>
+      <input type="text" id="surname" formControlName="surname" placeholder="Apellido" />
+      <div *ngIf="studentForm.get('surname')?.invalid && studentForm.get('surname')?.touched">El apellido es requerido</div>
+
+    </div>
+    <div class="form-group">
+      <label for="age">Edad</label>
+      <input type="number" id="age" formControlName="age" placeholder="Edad" />
+      <div *ngIf="studentForm.get('age')?.invalid && studentForm.get('age')?.touched">La edad es requerida y debe ser un número entre 1 y 120</div>
+
+    </div>
+    <div class="form-group">
+      <label for="rut">RUT</label>
+      <input type="text" id="rut" formControlName="rut" placeholder="RUT" />
+      <div *ngIf="studentForm.get('rut')?.invalid && studentForm.get('rut')?.touched">El RUT es requerido y debe tener el formato correcto</div>
+
+    </div>
+    <div class="form-group">
+      <label for="average">Promedio</label>
+      <input type="number" id="average" formControlName="average" placeholder="Promedio" />
+      <div *ngIf="studentForm.get('average')?.invalid && studentForm.get('average')?.touched  ">El promedio es requerido y debe ser un número entre 0 y 10</div>
+
+    </div>
+    <button type="submit" [disabled]="studentForm.invalid" class="submit-btn">Agregar estudiante</button>
+    <button type="button" (click)="onReset()" class="reset-btn">Limpiar</button>
+  </form>
+</div>
