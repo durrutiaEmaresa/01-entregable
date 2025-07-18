@@ -1,4 +1,4 @@
-.container {
+/* .container {
   display: grid;
   grid-template-areas:
     'toolbar toolbar'
@@ -17,4 +17,37 @@
 
 .content {
   grid-area: content;
+} */
+
+
+
+
+
+
+
+:host {
+  display: block;
+  height: 100vh;
+}
+
+.main-content {
+  display: flex;
+  height: calc(100vh - 64px); /* Ajusta si tu toolbar tiene otra altura */
+}
+
+.left-panel {
+  width: 40%;
+  min-width: 300px;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #fafafa;
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+}
+
+.right-panel {
+  width: 60%;
+  padding: 24px;
+  box-sizing: border-box;
+  overflow-y: auto;
 }

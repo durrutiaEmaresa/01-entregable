@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class Navbar {
 
+  @Output() activeSection = new EventEmitter<string>();
+
+  navigateTo(section: string) {
+    // Logic to navigate to the specified section
+    console.log(`Navigating to ${section}`);
+    this.activeSection.emit(section);
+  }
 }

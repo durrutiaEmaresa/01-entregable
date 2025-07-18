@@ -35,3 +35,91 @@
     <button type="button" (click)="onReset()" class="reset-btn">Limpiar</button>
   </form>
 </div>
+
+
+
+
+
+
+
+<!--
+<mat-card>
+  <mat-card-title>Agregar Estudiante</mat-card-title>
+  <mat-card-content>
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre</mat-label>
+      <input type="text" id="name" formControlName="name" placeholder="Nombre" />
+      <div *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched">El nombre es requerido</div>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Apellido</mat-label>
+      <input type="text" id="surname" formControlName="surname" placeholder="Apellido" />
+      <div *ngIf="studentForm.get('surname')?.invalid && studentForm.get('surname')?.touched">El apellido es requerido</div>
+
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Edad</mat-label>
+      <input type="number" id="age" formControlName="age" placeholder="Edad" />
+      <div *ngIf="studentForm.get('age')?.invalid && studentForm.get('age')?.touched">La edad es requerida y debe ser un número entre 1 y 120</div>
+
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>RUT</mat-label>
+      <input type="text" id="rut" formControlName="rut" placeholder="RUT" />
+      <div *ngIf="studentForm.get('rut')?.invalid && studentForm.get('rut')?.touched">El RUT es requerido y debe tener el formato correcto</div>
+
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Promedio</mat-label>
+      <input type="number" id="average" formControlName="average" placeholder="Promedio" />
+      <div *ngIf="studentForm.get('average')?.invalid && studentForm.get('average')?.touched  ">El promedio es requerido y debe ser un número entre 0 y 10</div>
+
+    </mat-form-field>
+    <button type="submit" [disabled]="studentForm.invalid" class="submit-btn">Agregar estudiante</button>
+    <button type="button" (click)="onReset()" class="reset-btn">Limpiar</button>
+  </form>
+  </mat-card-content>
+</mat-card> -->
+
+
+
+
+
+<!-- <mat-card>
+  <mat-card-title>Agregar Estudiante</mat-card-title>
+  <mat-card-content>
+    <form (ngSubmit)="onSubmit()" #studentForm="ngForm" autocomplete="off">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput name="name" [(ngModel)]="student.name" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Apellido</mat-label>
+        <input matInput name="surname" [(ngModel)]="student.surname" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Edad</mat-label>
+        <input matInput type="number" name="age" [(ngModel)]="student.age" required min="1">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>RUT</mat-label>
+        <input matInput name="rut" [(ngModel)]="student.rut" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Promedio</mat-label>
+        <input matInput type="number" name="average" [(ngModel)]="student.average" required min="1" max="7" step="0.1">
+      </mat-form-field>
+
+      <div class="actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="studentForm.invalid">
+          Agregar
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card> -->

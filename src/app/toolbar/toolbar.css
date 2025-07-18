@@ -1,0 +1,22 @@
+mat-toolbar {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.project-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.center-buttons {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16px;
+}
