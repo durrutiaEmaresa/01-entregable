@@ -52,3 +52,9 @@ table {
     min-width: 80px;
   }
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+  margin: 0 4px;
+}

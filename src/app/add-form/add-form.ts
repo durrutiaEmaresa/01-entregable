@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, OnInit, Output, output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Student } from '../../shared/entities';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,6 +18,7 @@ export class AddForm implements OnInit {
 
   studentForm!: FormGroup;
   @Output() studentAdded = new EventEmitter<Student>();
+  @Input() studentToEdit: Student | null = null;
   constructor(private fb: FormBuilder) {}
 
 
@@ -29,6 +30,14 @@ export class AddForm implements OnInit {
       rut: ['', Validators.required],
       average: ['', [Validators.required, Validators.min(0), Validators.max(10)]]
     });
+  }
+
+  ngOnChanges() {
+    if (this.studentToEdit) {
+      this.studentForm.patchValue(this.studentToEdit);
+    } else {
+      this.studentForm.reset();
+    }
   }
 
   onSubmit() {

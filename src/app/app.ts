@@ -17,6 +17,7 @@ import { AddForm } from "./add-form/add-form";
 export class App implements OnInit {
   students: Student[] = [];
   activeSection = 'students';
+  selectedStudent: Student | null = null;
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
@@ -29,5 +30,15 @@ export class App implements OnInit {
   addStudent(student: Student) {
     this.students = [...this.students, student];
     console.log('Student added:', student);
+  }
+
+  removeStudent(student: Student) {
+    this.students = this.students.filter(s => s !== student);
+  }
+
+
+  onEditStudent(student: Student) {
+    this.selectedStudent = { ...student }; // Copia para edición
+    this.activeSection = 'add'; // Opcional: muestra el formulario de edición
   }
 }

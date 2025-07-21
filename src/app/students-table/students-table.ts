@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { Student } from '../../shared/entities';
 import { MatTableModule } from '@angular/material/table';
 import { FullnamePipe } from '../../shared/pipes/fullname-pipe';
@@ -13,10 +13,21 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 })
 export class StudentsTable {
  @Input() students: Student[] = [];
-  displayedColumns: string[] = ['fullname', 'age', 'rut', 'average'];
+ @Output() deleteStudent = new EventEmitter<Student>();
+ @Output() editStudent = new EventEmitter<Student>();
+  displayedColumns: string[] = ['fullname', 'age', 'rut', 'average', 'acciones'];
   //displayedColumns: string[] = ['name', 'age'];
 
   constructor() {
     // Initialization logic if needed
+  }
+
+  onDelete(student: Student) {
+    this.deleteStudent.emit(student);
+  }
+
+
+  onEdit(student: Student) {
+    this.editStudent.emit(student);
   }
 }
