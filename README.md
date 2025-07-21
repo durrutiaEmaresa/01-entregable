@@ -57,3 +57,9 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Descripción del Proyecto
+
+Esta aplicación es una plataforma de gestión de estudiantes desarrollada con Angular y Angular Material. Permite agregar, editar y eliminar registros de estudiantes, mostrando la información en una tabla moderna y responsiva. La interfaz incluye una barra de navegación, un formulario para ingresar los datos de los estudiantes y una tabla para visualizar y administrar la lista. El proyecto aplica buenas prácticas de desarrollo en Angular, como el uso de formularios reactivos, arquitectura basada en componentes y estilos con Angular Material.
+
+Esta entrega corresponde a la **primera entrega del curso de Angular**.
