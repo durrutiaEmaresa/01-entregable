@@ -1,0 +1,74 @@
+{
+  "students": [
+    {
+      "name": "Juan",
+      "surname": "Pérez",
+      "age": 20,
+      "rut": 12345678,
+      "average": 8.5
+    },
+    {
+      "name": "María",
+      "surname": "Gómez",
+      "age": 22,
+      "rut": 87654321,
+      "average": 9.0
+    },
+    {
+      "name": "Pedro",
+      "surname": "López",
+      "age": 21,
+      "rut": 11223344,
+      "average": 7.5
+    },
+    {
+      "name": "Ana",
+      "surname": "Martínez",
+      "age": 19,
+      "rut": 44332211,
+      "average": 8.0
+    },
+    {
+      "name": "Luis",
+      "surname": "Fernández",
+      "age": 23,
+      "rut": 55667788,
+      "average": 9.5
+    },
+    {
+      "name": "Carlos",
+      "surname": "Ramírez",
+      "age": 24,
+      "rut": 99887766,
+      "average": 8.2
+    },
+    {
+      "name": "Lucía",
+      "surname": "Torres",
+      "age": 20,
+      "rut": 66554433,
+      "average": 9.1
+    },
+    {
+      "name": "Sofía",
+      "surname": "Hernández",
+      "age": 21,
+      "rut": 33445566,
+      "average": 7.8
+    },
+    {
+      "name": "Diego",
+      "surname": "Gutiérrez",
+      "age": 22,
+      "rut": 22334455,
+      "average": 8.7
+    },
+    {
+      "name": "Valentina",
+      "surname": "Sánchez",
+      "age": 19,
+      "rut": 55667799,
+      "average": 9.3
+    }
+  ]
+}

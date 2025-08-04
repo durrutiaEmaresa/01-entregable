@@ -1,6 +1,8 @@
-<app-toolbar (activeSection)="activeSection = $event"></app-toolbar>
+<app-toolbar class="toolbar"></app-toolbar>
+<app-navbar class="navbar"></app-navbar>
 <div class="main-content">
-  <div class="left-panel">
+  <router-outlet></router-outlet>
+  <!-- <div class="left-panel">
     <app-add-form
       [studentToEdit]="selectedStudent"
       (studentAdded)="addStudent($event)">
@@ -12,5 +14,5 @@
        (deleteStudent)="removeStudent($event)"
        (editStudent)="onEditStudent($event)">
       </app-students-table>
-  </div>
+  </div> -->
 </div>

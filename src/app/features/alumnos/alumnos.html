@@ -1,0 +1,9 @@
+<p>alumnos works!</p>
+
+<div *ngIf="alumnos; else loading">
+  {{alumnos | json}}
+</div>
+
+<ng-template #loading>
+  <p>Cargando...</p>
+</ng-template>

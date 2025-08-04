@@ -21,24 +21,24 @@ export class App implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<Student[]>('mocks/students.json').subscribe(data => {
-      this.students = data;
-    });
+    // this.http.get<Student[]>('mocks/students.json').subscribe(data => {
+    //   this.students = data;
+    // });
   }
 
 
-  addStudent(student: Student) {
-    this.students = [...this.students, student];
-    console.log('Student added:', student);
-  }
+  // addStudent(student: Student) {
+  //   this.students = [...this.students, student];
+  //   console.log('Student added:', student);
+  // }
 
-  removeStudent(student: Student) {
-    this.students = this.students.filter(s => s !== student);
-  }
+  // removeStudent(student: Student) {
+  //   this.students = this.students.filter(s => s !== student);
+  // }
 
 
-  onEditStudent(student: Student) {
-    this.selectedStudent = { ...student }; // Copia para edición
-    this.activeSection = 'add'; // Opcional: muestra el formulario de edición
-  }
+  // onEditStudent(student: Student) {
+  //   this.selectedStudent = { ...student }; // Copia para edición
+  //   this.activeSection = 'add'; // Opcional: muestra el formulario de edición
+  // }
 }
