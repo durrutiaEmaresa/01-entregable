@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Alumnos } from './features/alumnos/alumnos';
 import { Component } from '@angular/core';
 import { ViewStudent } from './features/alumnos/view-student/view-student';
+import { RoutesPaths } from '../shared/routes';
 
 export const routes: Routes = [
   {
@@ -9,19 +10,19 @@ export const routes: Routes = [
     component: Alumnos,
   },
   {
-    path: 'alumnos',
+    path: RoutesPaths.Alumnos,
     component: Alumnos,
   },
   {
-    path: 'view-student',
+    path: RoutesPaths.ViewStudent,
     component: ViewStudent,
   },
   {
-    path: 'cursos',
+    path: RoutesPaths.Cursos,
     loadComponent: () => import('./features/cursos/cursos').then(m => m.Cursos),
   },
   {
-    path: 'inscripciones',
+    path: RoutesPaths.Inscripciones,
     loadComponent: () => import('./features/inscripciones/inscripciones').then(m => m.Inscripciones),
   },
 ];

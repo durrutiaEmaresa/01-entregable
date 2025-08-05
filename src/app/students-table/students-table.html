@@ -48,8 +48,17 @@
           <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
         </svg>
       </a> -->
-      <button (click)="viewDetails(element)" routerLinkActive="router-link-active" >Ver</button>
-      <button (click)="deleteStudent(element)" routerLinkActive="router-link-active" >Eliminar</button>
+      <button mat-icon-button (click)="viewDetails(element)"
+              matTooltip="Ver detalles" aria-label="Ver detalles del estudiante"
+              class="view-btn">
+        <mat-icon>visibility</mat-icon>
+      </button>
+
+      <button mat-icon-button (click)="deleteStudent(element)"
+              matTooltip="Eliminar" aria-label="Eliminar estudiante"
+              class="delete-btn">
+        <mat-icon>delete</mat-icon>
+      </button>
     </td>
   </ng-container>
 

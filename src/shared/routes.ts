@@ -1,5 +1,7 @@
-export enum Routes {
-  Home = '/',
-  About = '/about',
-  Contact = '/contact'
+export enum RoutesPaths {
+  Home = '',
+  Alumnos = 'alumnos',
+  ViewStudent = 'view-student',
+  Cursos = 'cursos',
+  Inscripciones = 'inscripciones'
 }

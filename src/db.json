@@ -1,14 +1,6 @@
 {
   "students": [
     {
-      "id": "8",
-      "name": "Sofía",
-      "surname": "Hernández",
-      "age": 21,
-      "rut": 33445566,
-      "average": 7.8
-    },
-    {
       "id": "9",
       "name": "Diego",
       "surname": "Gutiérrez",
@@ -55,14 +47,6 @@
       "age": 22,
       "rut": 99887766,
       "average": 8.5
-    },
-    {
-      "id": "15",
-      "name": "Andrés",
-      "surname": "Vásquez",
-      "age": 19,
-      "rut": 55667788,
-      "average": 9.4
     },
     {
       "id": "16",
