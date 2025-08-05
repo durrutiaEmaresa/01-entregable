@@ -1,18 +1,13 @@
-<app-toolbar class="toolbar"></app-toolbar>
+<!-- <app-toolbar class="toolbar"></app-toolbar>
 <app-navbar class="navbar"></app-navbar>
 <div class="main-content">
   <router-outlet></router-outlet>
-  <!-- <div class="left-panel">
-    <app-add-form
-      [studentToEdit]="selectedStudent"
-      (studentAdded)="addStudent($event)">
-    </app-add-form>
+</div> -->
+
+<app-toolbar class="toolbar"></app-toolbar>
+<div class="layout-container">
+  <app-navbar class="sidebar"></app-navbar>
+  <div class="main-content">
+    <router-outlet></router-outlet>
   </div>
-  <div class="right-panel">
-    <app-students-table class="students-table"
-       [students]="students"
-       (deleteStudent)="removeStudent($event)"
-       (editStudent)="onEditStudent($event)">
-      </app-students-table>
-  </div> -->
 </div>

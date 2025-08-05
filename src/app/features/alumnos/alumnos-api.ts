@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 import { Student } from '../../../shared/entities';
 import { HttpClient } from '@angular/common/http';
 
@@ -14,4 +14,7 @@ export class AlumnosAPI {
     return this.http.get<Student[]>(`${this.baseURL}/students`);
   }
 
+  deleteAlumnos(student: Student): Observable<void> {
+    return this.http.delete<void>(`${this.baseURL}/students/${student.id}`).pipe(delay(1000));
+  }
 }

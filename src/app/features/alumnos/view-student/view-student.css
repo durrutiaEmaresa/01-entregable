@@ -1,0 +1,127 @@
+.student-detail-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.student-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.card-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.back-button {
+  color: white;
+}
+
+.card-content {
+  padding: 32px;
+}
+
+.student-avatar {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.avatar-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.student-info {
+  space-y: 16px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: 500;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.value {
+  font-weight: 400;
+  color: #333;
+  font-size: 1rem;
+}
+
+.average {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.average.excellent {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.average.good {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.average.regular {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .student-detail-container {
+    margin: 20px auto;
+    padding: 16px;
+  }
+
+  .card-content {
+    padding: 24px;
+  }
+
+  .info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

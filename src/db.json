@@ -1,55 +1,7 @@
 {
   "students": [
     {
-      "name": "Juan",
-      "surname": "Pérez",
-      "age": 20,
-      "rut": 12345678,
-      "average": 8.5
-    },
-    {
-      "name": "María",
-      "surname": "Gómez",
-      "age": 22,
-      "rut": 87654321,
-      "average": 9.0
-    },
-    {
-      "name": "Pedro",
-      "surname": "López",
-      "age": 21,
-      "rut": 11223344,
-      "average": 7.5
-    },
-    {
-      "name": "Ana",
-      "surname": "Martínez",
-      "age": 19,
-      "rut": 44332211,
-      "average": 8.0
-    },
-    {
-      "name": "Luis",
-      "surname": "Fernández",
-      "age": 23,
-      "rut": 55667788,
-      "average": 9.5
-    },
-    {
-      "name": "Carlos",
-      "surname": "Ramírez",
-      "age": 24,
-      "rut": 99887766,
-      "average": 8.2
-    },
-    {
-      "name": "Lucía",
-      "surname": "Torres",
-      "age": 20,
-      "rut": 66554433,
-      "average": 9.1
-    },
-    {
+      "id": "8",
       "name": "Sofía",
       "surname": "Hernández",
       "age": 21,
@@ -57,6 +9,7 @@
       "average": 7.8
     },
     {
+      "id": "9",
       "name": "Diego",
       "surname": "Gutiérrez",
       "age": 22,
@@ -64,11 +17,92 @@
       "average": 8.7
     },
     {
+      "id": "10",
       "name": "Valentina",
       "surname": "Sánchez",
       "age": 19,
       "rut": 55667799,
       "average": 9.3
+    },
+    {
+      "id": "11",
+      "name": "Carlos",
+      "surname": "Ramírez",
+      "age": 23,
+      "rut": 99887766,
+      "average": 8.2
+    },
+    {
+      "id": "12",
+      "name": "Isabella",
+      "surname": "Morales",
+      "age": 20,
+      "rut": 11223344,
+      "average": 9
+    },
+    {
+      "id": "13",
+      "name": "Mateo",
+      "surname": "Castro",
+      "age": 21,
+      "rut": 44332211,
+      "average": 7.9
+    },
+    {
+      "id": "14",
+      "name": "Camila",
+      "surname": "Pérez",
+      "age": 22,
+      "rut": 99887766,
+      "average": 8.5
+    },
+    {
+      "id": "15",
+      "name": "Andrés",
+      "surname": "Vásquez",
+      "age": 19,
+      "rut": 55667788,
+      "average": 9.4
+    },
+    {
+      "id": "16",
+      "name": "Gabriela",
+      "surname": "Rojas",
+      "age": 23,
+      "rut": 66554433,
+      "average": 8.1
+    },
+    {
+      "id": "17",
+      "name": "Fernando",
+      "surname": "García",
+      "age": 20,
+      "rut": 33445566,
+      "average": 9.2
+    },
+    {
+      "id": "18",
+      "name": "Natalia",
+      "surname": "López",
+      "age": 21,
+      "rut": 22334455,
+      "average": 7.6
+    },
+    {
+      "id": "19",
+      "name": "Samuel",
+      "surname": "Martínez",
+      "age": 22,
+      "rut": 55667799,
+      "average": 8.8
+    },
+    {
+      "id": "20",
+      "name": "Victoria",
+      "surname": "Fernández",
+      "age": 19,
+      "rut": 99887766,
+      "average": 9.5
     }
   ]
 }

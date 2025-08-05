@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { AlumnosAPI } from './alumnos-api';
 import { Student } from '../../../shared/entities';
 import { CommonModule, JsonPipe } from '@angular/common';
+import { StudentsTable } from "../../students-table/students-table";
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-alumnos',
-  imports: [JsonPipe, CommonModule],
+  imports: [JsonPipe, CommonModule, StudentsTable],
   templateUrl: './alumnos.html',
   styleUrl: './alumnos.css'
 })
@@ -20,6 +22,22 @@ export class Alumnos {
       //console.log(students);
       this.alumnos = students;
     });
+  }
+
+  deleteStudent(student: Student){
+
+    this.alumnosApi.deleteAlumnos(student).subscribe(() => {
+      this.alumnosApi.getAlumnos().subscribe(students => {
+        this.alumnos = students;
+      });
+    });
+
+    this.alumnosApi.deleteAlumnos(student).pipe(
+      switchMap(() => this.alumnosApi.getAlumnos())
+    ).subscribe(students => {
+      this.alumnos = students;
+    });
+
   }
 
 }

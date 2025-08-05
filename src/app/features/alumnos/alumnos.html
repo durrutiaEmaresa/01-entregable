@@ -1,7 +1,8 @@
 <p>alumnos works!</p>
 
 <div *ngIf="alumnos; else loading">
-  {{alumnos | json}}
+  <!--<pre>{{alumnos | json}}</pre>-->
+  <app-students-table (deleteEvent)="deleteStudent($event)" [students]="alumnos"></app-students-table>
 </div>
 
 <ng-template #loading>

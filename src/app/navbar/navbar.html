@@ -1,10 +1,26 @@
-<div class="navbar">
+<!-- <div class="navbar">
   <h2>Menú</h2>
   <ul>
     <li><a routerLink="/alumnos">Alumnos</a></li>
     <li><a routerLink="/cursos">Cursos</a></li>
     <li><a routerLink="/inscripciones">Inscripciones</a></li>
-    <li><a routerLink="/alumnos/edit">Editar</a></li>
   </ul>
 
-</div>
+</div> -->
+
+
+<mat-nav-list class="navbar">
+  <h3 mat-subheader>Menú Principal</h3>
+  <a mat-list-item routerLink="/alumnos" routerLinkActive="active">
+    <mat-icon>people</mat-icon>
+    <span>Alumnos</span>
+  </a>
+  <a mat-list-item routerLink="/cursos" routerLinkActive="active">
+    <mat-icon>book</mat-icon>
+    <span>Cursos</span>
+  </a>
+  <a mat-list-item routerLink="/inscripciones" routerLinkActive="active">
+    <mat-icon>assignment</mat-icon>
+    <span>Inscripciones</span>
+  </a>
+</mat-nav-list>
