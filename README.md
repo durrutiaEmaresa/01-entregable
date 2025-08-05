@@ -63,3 +63,24 @@ For more information on using the Angular CLI, including detailed command refere
 Esta aplicación es una plataforma de gestión de estudiantes desarrollada con Angular y Angular Material. Permite agregar, editar y eliminar registros de estudiantes, mostrando la información en una tabla moderna y responsiva. La interfaz incluye una barra de navegación, un formulario para ingresar los datos de los estudiantes y una tabla para visualizar y administrar la lista. El proyecto aplica buenas prácticas de desarrollo en Angular, como el uso de formularios reactivos, arquitectura basada en componentes y estilos con Angular Material.
 
 Esta entrega corresponde a la **primera entrega del curso de Angular**.
+
+##Entregable N°2
+
+## Funcionalidades Implementadas
+
+### Navegación y Enrutamiento
+- **Sistema de rutas**: Implementación de Angular Router para la navegación entre componentes
+- **Enums para rutas**: Uso de enumeraciones para gestionar las rutas de manera centralizada y tipada
+- **Navegación entre vistas**: Enlaces funcionales en la barra de navegación lateral
+
+### Gestión de Estudiantes
+- **Visualización de datos**: Tabla responsive con Angular Material que muestra la información completa de los estudiantes
+- **Vista de detalles**: Componente dedicado para mostrar información detallada de cada estudiante con diseño profesional
+- **Eliminación de registros**: Funcionalidad para eliminar estudiantes con feedback visual (spinner de carga)
+- **Interfaz intuitiva**: Botones de acción con iconos de Material Design y tooltips explicativos
+
+### Arquitectura y Buenas Prácticas
+- **Componentes reutilizables**: Estructura modular con componentes especializados
+- **Servicios para API**: Implementación de servicios para el manejo de datos con HttpClient
+- **Tipado fuerte**: Uso de interfaces TypeScript para garantizar la consistencia de datos
+- **Diseño responsive**: Adaptación a diferentes tamaños de pantalla

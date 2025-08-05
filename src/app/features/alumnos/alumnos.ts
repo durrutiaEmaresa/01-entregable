@@ -26,12 +26,6 @@ export class Alumnos {
 
   deleteStudent(student: Student){
 
-    this.alumnosApi.deleteAlumnos(student).subscribe(() => {
-      this.alumnosApi.getAlumnos().subscribe(students => {
-        this.alumnos = students;
-      });
-    });
-
     this.alumnosApi.deleteAlumnos(student).pipe(
       switchMap(() => this.alumnosApi.getAlumnos())
     ).subscribe(students => {
