@@ -11,15 +11,19 @@
 
 <mat-nav-list class="navbar">
   <h3 mat-subheader>Menú Principal</h3>
-  <a mat-list-item routerLink="/alumnos" routerLinkActive="active">
+  <a mat-list-item [routerLink]="[this.rutas.Alumnos]" routerLinkActive="active">
     <mat-icon>people</mat-icon>
     <span>Alumnos</span>
   </a>
-  <a mat-list-item routerLink="/cursos" routerLinkActive="active">
+  <a mat-list-item [routerLink]="[this.rutas.AddStudent]" routerLinkActive="active">
+    <mat-icon>person_add</mat-icon>
+    <span>Agregar Alumno</span>
+  </a>
+  <a mat-list-item [routerLink]="[this.rutas.Cursos]" routerLinkActive="active">
     <mat-icon>book</mat-icon>
     <span>Cursos</span>
   </a>
-  <a mat-list-item routerLink="/inscripciones" routerLinkActive="active">
+  <a mat-list-item [routerLink]="[this.rutas.Inscripciones]" routerLinkActive="active">
     <mat-icon>assignment</mat-icon>
     <span>Inscripciones</span>
   </a>

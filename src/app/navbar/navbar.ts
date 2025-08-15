@@ -3,6 +3,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { RoutesPaths } from '../../shared/routes';
 
 @Component({
   selector: 'app-navbar',
@@ -12,5 +13,6 @@ import { RouterModule } from '@angular/router';
 })
 export class Navbar {
 
+  rutas = RoutesPaths
 
 }

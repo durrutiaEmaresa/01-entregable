@@ -65,20 +65,12 @@
       "average": 7.6
     },
     {
-      "id": "19",
-      "name": "Samuel",
-      "surname": "Martínez",
-      "age": 22,
-      "rut": 55667799,
-      "average": 8.8
-    },
-    {
-      "id": "20",
-      "name": "Victoria",
-      "surname": "Fernández",
-      "age": 19,
-      "rut": 99887766,
-      "average": 9.5
+      "id": "fd36",
+      "name": "Daniel",
+      "surname": "Urrutia",
+      "age": 41,
+      "rut": 15700841,
+      "average": 5
     }
   ]
 }

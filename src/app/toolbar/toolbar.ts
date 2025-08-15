@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-toolbar',
-  imports: [BigTitle, MatToolbarModule, MatButtonModule],
+  imports: [MatToolbarModule, MatButtonModule],
   templateUrl: './toolbar.html',
   styleUrls: ['./toolbar.css']
 })
