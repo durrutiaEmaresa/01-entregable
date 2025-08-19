@@ -1,56 +1,70 @@
-<div>
-  <h2>Agrega estudiante</h2>
+<div class="add-student-container">
+  <!-- Removido el div .form-card -->
+  <h2>Agregar Nuevo Estudiante</h2>
+  <p class="form-description">Complete los siguientes campos para registrar un nuevo estudiante en el sistema.</p>
+
   <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <!-- Fila 1: Nombre y Apellido -->
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="name" placeholder="Ingresa el nombre" />
+        <mat-error *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched">
+          El nombre es requerido (mínimo 2 caracteres)
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Nombre</mat-label>
-      <input matInput formControlName="name" placeholder="Nombre" />
-      <mat-error *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched">
-        El nombre es requerido (mínimo 2 caracteres)
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="surname" placeholder="Ingresa el apellido" />
+        <mat-error *ngIf="studentForm.get('surname')?.invalid && studentForm.get('surname')?.touched">
+          El apellido es requerido (mínimo 2 caracteres)
+        </mat-error>
+      </mat-form-field>
+    </div>
 
-    <mat-form-field>
-      <mat-label>Apellido</mat-label>
-      <input matInput formControlName="surname" placeholder="Apellido" />
-      <mat-error *ngIf="studentForm.get('surname')?.invalid && studentForm.get('surname')?.touched">
-        El apellido es requerido (mínimo 2 caracteres)
-      </mat-error>
-    </mat-form-field>
+    <!-- Fila 2: Edad y RUT -->
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Edad</mat-label>
+        <input matInput type="number" formControlName="age" placeholder="18" />
+        <mat-error *ngIf="studentForm.get('age')?.invalid && studentForm.get('age')?.touched">
+          La edad debe estar entre 16 y 99 años
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Edad</mat-label>
-      <input matInput type="number" formControlName="age" placeholder="Edad" />
-      <mat-error *ngIf="studentForm.get('age')?.invalid && studentForm.get('age')?.touched">
-        La edad debe estar entre 16 y 99 años
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>RUT</mat-label>
+        <input matInput type="number" formControlName="rut" placeholder="12345678" />
+        <mat-error *ngIf="studentForm.get('rut')?.invalid && studentForm.get('rut')?.touched">
+          RUT debe tener entre 7 y 8 dígitos
+        </mat-error>
+      </mat-form-field>
+    </div>
 
-    <mat-form-field>
-      <mat-label>RUT</mat-label>
-      <input matInput type="number" formControlName="rut" placeholder="RUT (sin puntos ni guión)" />
-      <mat-error *ngIf="studentForm.get('rut')?.invalid && studentForm.get('rut')?.touched">
-        RUT debe tener entre 7 y 8 dígitos
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field>
+    <!-- Fila 3: Promedio -->
+    <mat-form-field appearance="outline">
       <mat-label>Promedio</mat-label>
-      <input matInput type="number" step="0.1" formControlName="average" placeholder="Promedio" />
+      <input matInput type="number" step="0.1" formControlName="average" placeholder="8.5" />
       <mat-error *ngIf="studentForm.get('average')?.invalid && studentForm.get('average')?.touched">
         El promedio debe estar entre 1.0 y 10.0
       </mat-error>
     </mat-form-field>
 
+    <!-- Botones -->
     <div class="form-buttons">
       <button mat-raised-button color="primary" type="submit"
-              [disabled]="studentForm.invalid || isLoading">
-        <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
-        <span *ngIf="!isLoading">Agregar estudiante</span>
-        <span *ngIf="isLoading">Guardando...</span>
+              [disabled]="studentForm.invalid || isLoading" class="primary-button">
+        <div class="button-content">
+          <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
+          <span *ngIf="!isLoading">Agregar Estudiante</span>
+          <span *ngIf="isLoading">Guardando...</span>
+        </div>
       </button>
-      <button mat-button type="button" (click)="onReset()" [disabled]="isLoading">
-        Limpiar
+
+      <button mat-raised-button type="button" class="secondary-button"
+              (click)="onReset()" [disabled]="isLoading">
+        Limpiar Formulario
       </button>
     </div>
   </form>

@@ -1,12 +1,14 @@
 import { TestBed } from '@angular/core/testing';
-
 import { AlumnosAPI } from './alumnos-api';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AlumnosAPI', () => {
   let service: AlumnosAPI;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
     service = TestBed.inject(AlumnosAPI);
   });
 

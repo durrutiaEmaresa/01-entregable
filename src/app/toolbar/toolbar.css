@@ -1,22 +1,216 @@
-mat-toolbar {
+.toolbar {
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  height: 64px;
+  padding: 0 24px;
   display: flex;
   align-items: center;
   position: relative;
+  overflow: hidden;
 }
 
-.project-title {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.toolbar-spacer {
-  flex: 1 1 auto;
-}
-
-.center-buttons {
+/* Efecto de brillo sutil */
+.toolbar::before {
+  content: '';
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: toolbarShine 4s infinite;
+}
+
+@keyframes toolbarShine {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: -100%; }
+}
+
+/* Nombre de la aplicación */
+.app-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+  min-width: 180px;
+}
+
+/* Espaciador flexible */
+.spacer {
+  flex: 1;
+}
+
+/* Título de la página */
+.page-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 200px;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Información del usuario */
+.user-info {
   display: flex;
-  gap: 16px;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  min-width: 180px;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.user-info:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.user-info mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.user-role {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  text-transform: capitalize;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .toolbar {
+    padding: 0 16px;
+    height: 56px;
+  }
+
+  .app-title {
+    font-size: 1.2rem;
+    min-width: 120px;
+  }
+
+  .page-title {
+    font-size: 1rem;
+    min-width: 150px;
+    padding: 6px 12px;
+  }
+
+  .user-info {
+    min-width: 140px;
+    padding: 6px 12px;
+  }
+
+  .user-name {
+    font-size: 0.9rem;
+  }
+
+  .user-role {
+    font-size: 0.75rem;
+    padding: 1px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar {
+    padding: 0 12px;
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 56px;
+  }
+
+  .app-title {
+    font-size: 1.1rem;
+    min-width: auto;
+    flex: 1;
+  }
+
+  .page-title {
+    order: 3;
+    width: 100%;
+    margin-top: 8px;
+    text-align: center;
+    min-width: auto;
+  }
+
+  .user-info {
+    min-width: auto;
+    padding: 4px 8px;
+  }
+
+  .user-name {
+    display: none; /* Ocultar nombre en móviles muy pequeños */
+  }
+
+  .user-role {
+    font-size: 0.7rem;
+  }
+}
+
+/* Animación de entrada */
+.toolbar {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Efectos adicionales para mejor UX */
+.page-title {
+  transition: all 0.3s ease;
+}
+
+.page-title:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.02);
+}
+
+/* Mejora de legibilidad */
+.app-title,
+.page-title,
+.user-name,
+.user-role {
+  user-select: none; /* Evitar selección accidental de texto */
 }

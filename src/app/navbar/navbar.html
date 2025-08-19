@@ -1,30 +1,21 @@
-<!-- <div class="navbar">
-  <h2>Menú</h2>
-  <ul>
-    <li><a routerLink="/alumnos">Alumnos</a></li>
-    <li><a routerLink="/cursos">Cursos</a></li>
-    <li><a routerLink="/inscripciones">Inscripciones</a></li>
-  </ul>
-
-</div> -->
-
-
-<mat-nav-list class="navbar">
+<mat-nav-list class="navbar" *ngIf="isLoggedIn">
   <h3 mat-subheader>Menú Principal</h3>
-  <a mat-list-item [routerLink]="[this.rutas.Alumnos]" routerLinkActive="active">
-    <mat-icon>people</mat-icon>
-    <span>Alumnos</span>
+
+  <a mat-list-item
+     *ngFor="let item of getVisibleMenuItems()"
+     [routerLink]="item.path"
+     routerLinkActive="active"
+     [routerLinkActiveOptions]="{exact: false}">
+    <mat-icon>{{ item.icon }}</mat-icon>
+    <span>{{ item.label }}</span>
   </a>
-  <a mat-list-item [routerLink]="[this.rutas.AddStudent]" routerLinkActive="active">
-    <mat-icon>person_add</mat-icon>
-    <span>Agregar Alumno</span>
-  </a>
-  <a mat-list-item [routerLink]="[this.rutas.Cursos]" routerLinkActive="active">
-    <mat-icon>book</mat-icon>
-    <span>Cursos</span>
-  </a>
-  <a mat-list-item [routerLink]="[this.rutas.Inscripciones]" routerLinkActive="active">
-    <mat-icon>assignment</mat-icon>
-    <span>Inscripciones</span>
-  </a>
+
+  <!-- Separator -->
+  <mat-divider></mat-divider>
+
+  <!-- Logout button - Solo mostrar si está logueado -->
+  <button mat-list-item (click)="logout()" class="logout-item" *ngIf="isLoggedIn">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar Sesión</span>
+  </button>
 </mat-nav-list>

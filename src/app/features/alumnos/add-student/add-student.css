@@ -1,129 +1,187 @@
-/* Contenedor principal del formulario */
 .add-student-container {
-  max-width: 600px;
+  max-width: 800px; /* Aumentar el ancho del contenedor */
   margin: 0 auto;
   padding: 24px;
 }
 
-/* Título del formulario */
 h2 {
   color: #424242;
   font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
   text-align: center;
-  border-bottom: 2px solid #f0f0f0;
-  padding-bottom: 12px;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
-/* Card contenedor del formulario */
-.form-card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 32px;
-  border: 1px solid #e0e0e0;
+.form-description {
+  color: #666;
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
-/* Formulario */
 form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
+  max-width: 700px; /* Limitar el ancho del formulario */
+  margin: 0 auto; /* Centrar el formulario */
 }
 
-/* Campos del formulario */
-mat-form-field {
-  width: 100%;
-}
-
-/* Fila de campos (para poner lado a lado) */
 .form-row {
   display: flex;
-  gap: 16px;
+  gap: 24px; /* Más espacio entre campos */
 }
 
 .form-row mat-form-field {
   flex: 1;
+  min-width: 200px; /* Ancho mínimo para cada campo */
 }
 
-/* Botones */
-.form-buttons {
-  display: flex;
-  gap: 16px;
-  margin-top: 24px;
-  justify-content: center;
-  align-items: center;
+mat-form-field {
+  width: 100%;
 }
 
-.form-buttons button {
-  min-width: 140px;
-  height: 44px;
+/* Campo de promedio que ocupe todo el ancho */
+.full-width-field {
+  width: 100%;
+  max-width: 300px; /* Limitar el ancho máximo */
+  margin: 0 auto; /* Centrar el campo */
+}
+
+/* Hacer los campos más grandes */
+::ng-deep .mat-mdc-form-field {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+::ng-deep .mat-mdc-form-field .mat-mdc-text-field-wrapper {
+  min-height: 56px;
+  width: 100%; /* Asegurar que use todo el ancho disponible */
+}
+
+::ng-deep .mat-mdc-form-field .mdc-text-field {
+  font-size: 16px;
+  padding: 0 16px;
+  width: 100%; /* Usar todo el ancho */
+}
+
+::ng-deep .mat-mdc-form-field input {
+  font-size: 16px;
+  padding: 16px 0;
+  width: 100%; /* Input usa todo el ancho */
+}
+
+::ng-deep .mat-mdc-form-field .mat-mdc-form-field-label {
+  font-size: 14px;
   font-weight: 500;
 }
 
+::ng-deep .mat-mdc-form-field.mat-focused .mat-mdc-form-field-focus-overlay {
+  background-color: rgba(37, 99, 235, 0.12);
+}
+
+::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: #2563eb;
+  border-width: 2px;
+}
+
+::ng-deep .mdc-notched-outline__leading,
+::ng-deep .mdc-notched-outline__notch,
+::ng-deep .mdc-notched-outline__trailing {
+  border-width: 1.5px;
+  border-color: #d1d5db;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+  justify-content: center;
+}
+
+.form-buttons button {
+  min-width: 160px;
+  height: 48px;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
 .primary-button {
-  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  background: #2563eb;
   color: white;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+.primary-button:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.primary-button:disabled {
+  background: #94a3b8;
+  color: #e2e8f0;
+  transform: none;
+  box-shadow: none;
 }
 
 .secondary-button {
-  background: #f5f5f5;
-  color: #616161;
+  background: #6b7280;
+  color: white;
+  box-shadow: 0 2px 8px rgba(107, 114, 128, 0.25);
 }
 
 .secondary-button:hover {
-  background: #e0e0e0;
+  background: #4b5563;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
 }
 
-/* Spinner en el botón */
+.secondary-button:disabled {
+  background: #d1d5db;
+  color: #9ca3af;
+  transform: none;
+  box-shadow: none;
+}
+
 .button-content {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-/* Estilos para mensajes de error */
-mat-error {
-  font-size: 0.75rem;
-  color: #d32f2f;
+/* Mensajes de error más visibles */
+::ng-deep .mat-mdc-form-field .mat-error {
+  font-size: 13px;
+  margin-top: 4px;
+  color: #dc2626;
+  font-weight: 500;
 }
 
-/* Estilos para snackbar */
-::ng-deep .success-snackbar {
-  background-color: #4caf50 !important;
-  color: white !important;
-}
-
-::ng-deep .error-snackbar {
-  background-color: #f44336 !important;
-  color: white !important;
-}
-
-/* Estados de los campos */
-::ng-deep .mat-mdc-form-field.mat-focused .mat-mdc-form-field-focus-overlay {
-  background-color: rgba(102, 126, 234, 0.12);
-}
-
-::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
-::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
-::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
-  border-color: #667eea;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
   .add-student-container {
     padding: 16px;
+    max-width: 100%; /* Usar todo el ancho en móvil */
   }
 
-  .form-card {
-    padding: 24px 16px;
+  form {
+    max-width: 100%; /* Formulario usa todo el ancho en móvil */
   }
 
   .form-row {
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
+  }
+
+  .form-row mat-form-field {
+    min-width: auto; /* Quitar ancho mínimo en móvil */
   }
 
   .form-buttons {
@@ -133,10 +191,19 @@ mat-error {
 
   .form-buttons button {
     width: 100%;
+    min-width: auto;
   }
 
   h2 {
     font-size: 1.3rem;
+  }
+
+  ::ng-deep .mat-mdc-form-field .mat-mdc-text-field-wrapper {
+    min-height: 52px;
+  }
+
+  ::ng-deep .mat-mdc-form-field input {
+    font-size: 16px;
   }
 }
 
@@ -145,7 +212,7 @@ mat-error {
     padding: 12px;
   }
 
-  .form-card {
-    padding: 20px 12px;
+  form {
+    gap: 20px;
   }
 }
