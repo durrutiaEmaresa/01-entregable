@@ -1,49 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { Router, NavigationEnd } from '@angular/router';
-import { AuthService } from '../features/services/auth-service';
+import { MatIconModule } from '@angular/material/icon';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { User } from '../../shared/entities';
-import { filter, map } from 'rxjs/operators';
+import * as AuthActions from '../store/auth/auth.actions';
+import * as AuthSelectors from '../store/auth/auth.selectors';
 
 @Component({
   selector: 'app-toolbar',
-  imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule],
+  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],
   templateUrl: './toolbar.html',
   styleUrl: './toolbar.css'
 })
 export class Toolbar implements OnInit {
-  currentUser: User | null = null;
-  currentPageTitle = 'Gestión de Estudiantes';
+  currentUser$: Observable<User | null>;
+  isAuthenticated$: Observable<boolean>;
 
-  private routeTitles: { [key: string]: string } = {
-    '/alumnos': 'Gestión de Alumnos',
-    '/cursos': 'Gestión de Cursos',
-    '/inscripciones': 'Gestión de Inscripciones',
-    '/add-student': 'Agregar Nuevo Alumno',
-    '/view-student': 'Detalle del Alumno'
-  };
-
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private store: Store) {
+    this.currentUser$ = this.store.select(AuthSelectors.selectCurrentUser);
+    this.isAuthenticated$ = this.store.select(AuthSelectors.selectIsAuthenticated);
+  }
 
   ngOnInit() {
-    this.authService.currentUser$.subscribe(user => {
-      this.currentUser = user;
-    });
+    this.store.dispatch(AuthActions.checkAuthStatus());
+  }
 
-    // Actualizar título según la ruta
-    this.router.events
-      .pipe(
-        filter(event => event instanceof NavigationEnd),
-        map(event => event as NavigationEnd)
-      )
-      .subscribe(event => {
-        this.currentPageTitle = this.routeTitles[event.urlAfterRedirects] || 'Gestión de Estudiantes';
-      });
+  logout() {
+    this.store.dispatch(AuthActions.logout());
   }
 }

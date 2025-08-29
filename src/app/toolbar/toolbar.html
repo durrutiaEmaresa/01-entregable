@@ -1,15 +1,15 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf="isAuthenticated$ | async">
   <span class="app-title">Sistema Académico</span>
 
   <span class="spacer"></span>
 
-  <span class="page-title">{{ currentPageTitle }}</span>
+  <span class="page-title">titulo</span>
 
   <span class="spacer"></span>
 
-  <div class="user-info" *ngIf="currentUser">
+  <div class="user-info" *ngIf="currentUser$ | async as user">
     <mat-icon>account_circle</mat-icon>
-    <span class="user-name">{{ currentUser.fullName }}</span>
-    <span class="user-role">({{ currentUser.role }})</span>
+    <span class="user-name">{{ user.fullName }}</span>
+    <span class="user-role">({{ user.role }})</span>
   </div>
 </mat-toolbar>

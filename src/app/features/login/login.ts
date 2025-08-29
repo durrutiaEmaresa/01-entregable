@@ -1,14 +1,16 @@
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { AuthService } from '../services/auth-service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import * as AuthActions from '../../store/auth/auth.actions';
+import * as AuthSelectors from '../../store/auth/auth.selectors';
 
 @Component({
   selector: 'app-login',
@@ -20,68 +22,49 @@ import { AuthService } from '../services/auth-service';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatSnackBarModule
+    MatProgressSpinnerModule
   ],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
-export class Login {
+export class Login implements OnInit {
   loginForm: FormGroup;
-  isLoading = false;
   hidePassword = true;
+
+  isLoading$: Observable<boolean>;
+  error$: Observable<string | null>;
+
+  testCredentials = [
+    { username: 'admin', password: '123456', role: 'Administrador' },
+    { username: 'usuario', password: '123456', role: 'Usuario' }
+  ];
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router,
-    private snackBar: MatSnackBar
+    private store: Store
   ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
+
+    this.isLoading$ = this.store.select(AuthSelectors.selectAuthLoading);
+    this.error$ = this.store.select(AuthSelectors.selectAuthError);
+  }
+
+  ngOnInit() {
+    this.store.dispatch(AuthActions.checkAuthStatus());
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.isLoading = true;
       const { username, password } = this.loginForm.value;
-
-      this.authService.login(username, password).subscribe({
-        next: (success) => {
-          this.isLoading = false;
-          if (success) {
-            this.router.navigate(['/alumnos']);
-          } else {
-            this.snackBar.open('Credenciales incorrectas', 'Cerrar', {
-              duration: 3000,
-              panelClass: ['error-snackbar']
-            });
-          }
-        },
-        error: () => {
-          this.isLoading = false;
-          this.snackBar.open('Error en el login', 'Cerrar', {
-            duration: 3000,
-            panelClass: ['error-snackbar']
-          });
-        }
-      });
+      console.log('Dispatching login action:', { username, password });
+      this.store.dispatch(AuthActions.login({ username, password }));
     }
   }
 
-  // Método para mostrar credenciales de prueba
-  fillTestCredentials(role: 'admin' | 'usuario') {
-    if (role === 'admin') {
-      this.loginForm.patchValue({
-        username: 'admin',
-        password: 'admin123'
-      });
-    } else {
-      this.loginForm.patchValue({
-        username: 'usuario',
-        password: 'user123'
-      });
-    }
+  fillCredentials(username: string, password: string) {
+    this.loginForm.patchValue({ username, password });
   }
 }

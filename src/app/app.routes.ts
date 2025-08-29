@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard, adminGuard } from '../shared/guards/auth-guard';
-import { RoutesPaths } from '../shared/routes'; // ✅ Importar el enum
+import { RoutesPaths } from '../shared/routes';
 
 export const routes: Routes = [
   { path: RoutesPaths.Home, redirectTo: '/login', pathMatch: 'full' },

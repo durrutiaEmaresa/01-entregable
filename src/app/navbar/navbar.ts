@@ -3,9 +3,12 @@ import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-import { AuthService } from '../features/services/auth-service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { User } from '../../shared/entities';
-import { RoutesPaths } from '../../shared/routes'; // ✅ Importar el enum
+import { RoutesPaths } from '../../shared/routes';
+import * as AuthActions from '../store/auth/auth.actions';
+import * as AuthSelectors from '../store/auth/auth.selectors';
 
 interface MenuItem {
   path: string;
@@ -21,10 +24,9 @@ interface MenuItem {
   styleUrl: './navbar.css'
 })
 export class Navbar implements OnInit {
-  currentUser: User | null = null;
-  isLoggedIn = false;
+  currentUser$: Observable<User | null>;
+  isAuthenticated$: Observable<boolean>;
 
-  // ✅ Usando el enum RoutesPaths
   menuItems: MenuItem[] = [
     { path: `/${RoutesPaths.Alumnos}`, label: 'Alumnos', icon: 'people', roles: ['admin', 'usuario'] },
     { path: `/${RoutesPaths.Cursos}`, label: 'Cursos', icon: 'book', roles: ['admin', 'usuario'] },
@@ -32,24 +34,24 @@ export class Navbar implements OnInit {
     { path: `/${RoutesPaths.AddStudent}`, label: 'Agregar Alumno', icon: 'person_add', roles: ['admin'] }
   ];
 
-  constructor(private authService: AuthService) {}
-
-  ngOnInit() {
-    this.authService.currentUser$.subscribe(user => {
-      this.currentUser = user;
-      this.isLoggedIn = !!user;
-    });
+  constructor(private store: Store) {
+    this.currentUser$ = this.store.select(AuthSelectors.selectCurrentUser);
+    this.isAuthenticated$ = this.store.select(AuthSelectors.selectIsAuthenticated);
   }
 
-  getVisibleMenuItems(): MenuItem[] {
-    if (!this.currentUser) return [];
+  ngOnInit() {
+    this.store.dispatch(AuthActions.checkAuthStatus());
+  }
+
+  getVisibleMenuItems(user: User | null): MenuItem[] {
+    if (!user) return [];
 
     return this.menuItems.filter(item =>
-      item.roles.includes(this.currentUser!.role)
+      item.roles.includes(user.role)
     );
   }
 
   logout() {
-    this.authService.logout();
+    this.store.dispatch(AuthActions.logout());
   }
 }

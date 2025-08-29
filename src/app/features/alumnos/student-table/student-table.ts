@@ -25,13 +25,10 @@ import { Router, RouterModule } from '@angular/router';
 export class StudentsTable {
  @Input() students: Student[] = [];
  @Output() deleteEvent = new EventEmitter<Student>();
-//  @Output() deleteStudent = new EventEmitter<Student>();
-//  @Output() editStudent = new EventEmitter<Student>();
   displayedColumns: string[] = ['fullname', 'age', 'rut', 'average', 'acciones'];
-  //displayedColumns: string[] = ['name', 'age'];
 
   constructor(private router: Router) {
-    // Initialization logic if needed
+
   }
 
 

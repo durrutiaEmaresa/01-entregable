@@ -1,27 +1,49 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { AuthService } from '../../app/features/services/auth-service';
+import { Store } from '@ngrx/store';
+import { map, take } from 'rxjs/operators';
+import * as AuthSelectors from '../../app/store/auth/auth.selectors';
+import * as AuthActions from '../../app/store/auth/auth.actions';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  const authService = inject(AuthService);
+  const store = inject(Store);
   const router = inject(Router);
 
-  if (authService.isLoggedIn()) {
-    return true;
-  }
+  store.dispatch(AuthActions.checkAuthStatus());
 
-  router.navigate(['/login']);
-  return false;
+  return store.select(AuthSelectors.selectIsAuthenticated).pipe(
+    take(1),
+    map(isAuthenticated => {
+      if (isAuthenticated) {
+        return true;
+      }
+
+      router.navigate(['/login']);
+      return false;
+    })
+  );
 };
 
 export const adminGuard: CanActivateFn = (route, state) => {
-  const authService = inject(AuthService);
+  const store = inject(Store);
   const router = inject(Router);
 
-  if (authService.isAdmin()) {
-    return true;
-  }
+  store.dispatch(AuthActions.checkAuthStatus());
 
-  router.navigate(['/alumnos']); // Redirigir a página permitida
-  return false;
+  return store.select(AuthSelectors.selectCurrentUser).pipe(
+    take(1),
+    map(user => {
+      if (user && user.role === 'admin') {
+        return true;
+      }
+
+      if (user) {
+        router.navigate(['/alumnos']);
+      } else {
+        router.navigate(['/login']);
+      }
+
+      return false;
+    })
+  );
 };

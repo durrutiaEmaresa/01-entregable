@@ -8,9 +8,11 @@ export interface Student {
 }
 
 export interface User {
-  id: string;
+  id: number | string;
+  name: string;
+  surname: string;
   username: string;
-  email: string;
+  email?: string;
   password: string;
   role: 'admin' | 'usuario';
   fullName: string;

@@ -1,21 +1,23 @@
-<mat-nav-list class="navbar" *ngIf="isLoggedIn">
-  <h3 mat-subheader>Menú Principal</h3>
+<div *ngIf="isAuthenticated$ | async">
+  <mat-nav-list class="navbar">
+    <h3 mat-subheader>Menú Principal</h3>
 
-  <a mat-list-item
-     *ngFor="let item of getVisibleMenuItems()"
-     [routerLink]="item.path"
-     routerLinkActive="active"
-     [routerLinkActiveOptions]="{exact: false}">
-    <mat-icon>{{ item.icon }}</mat-icon>
-    <span>{{ item.label }}</span>
-  </a>
+    <ng-container *ngIf="currentUser$ | async as user">
+      <a mat-list-item
+         *ngFor="let item of getVisibleMenuItems(user)"
+         [routerLink]="item.path"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact: false}">
+        <mat-icon>{{ item.icon }}</mat-icon>
+        <span>{{ item.label }}</span>
+      </a>
+    </ng-container>
 
-  <!-- Separator -->
-  <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
 
-  <!-- Logout button - Solo mostrar si está logueado -->
-  <button mat-list-item (click)="logout()" class="logout-item" *ngIf="isLoggedIn">
-    <mat-icon>logout</mat-icon>
-    <span>Cerrar Sesión</span>
-  </button>
-</mat-nav-list>
+    <button mat-list-item (click)="logout()" class="logout-item">
+      <mat-icon>logout</mat-icon>
+      <span>Cerrar Sesión</span>
+    </button>
+  </mat-nav-list>
+</div>

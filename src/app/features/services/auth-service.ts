@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { User, UserRole } from '../../../shared/entities';
-import { Router } from '@angular/router';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { delay } from 'rxjs/operators';
+import { User } from '../../../shared/entities';
+
+interface LoginCredentials {
+  username: string;
+  password: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -10,65 +15,62 @@ export class AuthService {
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
 
-  // Usuarios de prueba (en producción vendrían de la API)
   private mockUsers: User[] = [
     {
-      id: '1',
+      id: 1,
+      name: 'Admin',
+      surname: 'User',
+      fullName: 'Admin User',
       username: 'admin',
-      email: 'admin@test.com',
-      password: 'admin123',
-      role: 'admin',
-      fullName: 'Administrador Sistema'
+      password: '123456',
+      role: 'admin'
     },
     {
-      id: '2',
+      id: 2,
+      name: 'Regular',
+      surname: 'User',
+      fullName: 'Regular User',
       username: 'usuario',
-      email: 'usuario@test.com',
-      password: 'user123',
-      role: 'usuario',
-      fullName: 'Usuario Regular'
+      password: '123456',
+      role: 'usuario'
     }
   ];
 
-  constructor(private router: Router) {
-    // Verificar si hay usuario logueado en localStorage
+  constructor() {
     const storedUser = localStorage.getItem('currentUser');
     if (storedUser) {
-      this.currentUserSubject.next(JSON.parse(storedUser));
+      const user = JSON.parse(storedUser);
+      this.currentUserSubject.next(user);
     }
   }
 
-  login(username: string, password: string): Observable<boolean> {
-    const user = this.mockUsers.find(u => u.username === username && u.password === password);
+  login(credentials: LoginCredentials): Observable<User> {
+    const { username, password } = credentials;
+
+    const user = this.mockUsers.find(u =>
+      u.username === username && u.password === password
+    );
 
     if (user) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.currentUserSubject.next(user);
-      return of(true);
+      return of(user).pipe(delay(1000));
+    } else {
+      return throwError(() => new Error('Credenciales incorrectas'));
     }
-    return of(false);
   }
 
   logout(): void {
-    localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
-    this.router.navigate(['/login']);
   }
 
   getCurrentUser(): User | null {
     return this.currentUserSubject.value;
   }
 
-  isLoggedIn(): boolean {
-    return this.currentUserSubject.value !== null;
+  isAuthenticated(): boolean {
+    return !!this.currentUserSubject.value;
   }
 
-  getUserRole(): UserRole | null {
-    const user = this.getCurrentUser();
-    return user ? user.role : null;
-  }
-
-  isAdmin(): boolean {
-    return this.getUserRole() === 'admin';
+  setCurrentUser(user: User | null): void {
+    this.currentUserSubject.next(user);
   }
 }
